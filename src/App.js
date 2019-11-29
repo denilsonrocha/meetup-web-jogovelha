@@ -1,59 +1,86 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 
-import socketIOClient from 'socket.io-client';
+//import socketIOClient from 'socket.io-client';
 
 
-class App extends Component {
+function App() {
 
+  //const limpaTabuleiro = Array(9).fill("");
 
-  constructor() {
-    super();
+  const limpaTabuleiro = [
+    "O", "X", "X",
+    "O", "X", "X",
+    "O", "X", "X",
+  ]
 
-    this.state = {
-      serverURL: 'http://localhost:3334',
-      informationReceived: 'Nothing yet! You should click on the button'
-    }
+  const [tabuleiro, setTabuleiro] = useState(limpaTabuleiro);
 
-    const socket = socketIOClient(this.state.serverURL);
+  return (
+    <main>
+      <h1 className="title"> *** Jogo da Velha ***</h1>
 
-    socket.on('receivedMessage', (receivedInfo) => {
-      this.setState({
-        informationReceived: receivedInfo[0][0]
-      })
-    })
-  }
-
-  emitInfo = () => {
-
-    const socket = socketIOClient(this.state.serverURL);
-
-    socket.emit('sendMessage', 'teste envio de dados');
-
-  }
-
-  render() {
-    return (
-      <div className="App" >
-        <header className="App-header">
-          <button onClick={() => this.emitInfo()}>envia dados</button>
-
-          <div className="App-link ">
-            {
-              this.state.informationReceived
-            }
-          </div>
-
-
-
-        </header>
-
-        <br />
-
+      <div className="tabuleiro">
+        {
+          tabuleiro.map((item, index) => (
+            <div key={index} className={`campo ${item}`}>{item}</div>
+          ))
+        }
+        <div className="campo">.</div>
       </div>
-    );
-  }
-}
+    </main>
+  )
 
+}
 export default App;
+
+// class App extends Component {
+
+
+
+//   constructor() {
+//     super();
+
+//     // this.state = {
+//     //   serverURL: 'http://localhost:3334',
+//     //   informationReceived: 'I'
+//     // }
+
+
+//     const socket = socketIOClient(this.state.serverURL);
+
+//     socket.on('receivedMessage', (receivedInfo) => {
+//       this.setState({
+//         informationReceived: receivedInfo[0][0]
+//       })
+//     })
+//   }
+
+//   emitInfo = () => {
+
+//     const socket = socketIOClient(this.state.serverURL);
+
+//     socket.emit('sendMessage', 'teste envio de dados');
+
+//   }
+
+//   render() {
+//     return (
+//       <main>
+//         <h1 className="title"> *** Jogo da Velha ***</h1>
+
+//         <div className="tabuleiro">
+//           {
+//             tabuleiro.map((item,index) => {
+
+//             })
+//           }
+//           <div className="campo">.</div>
+//         </div>
+//       </main>
+//     );
+//   }
+// }
+
+// export default App;
