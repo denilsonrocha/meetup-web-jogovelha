@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
 
-  const limpaTabuleiro = Array(9).fill("");
+ const limpaTabuleiro = Array(9).fill("");
 
   // const limpaTabuleiro = [
   //   "O", "X", "X",
@@ -45,8 +45,8 @@ function App() {
     ]
 
     possibilidades.forEach(campos => {
-      if(campos.every(campo => campo === "0")) setGanhador('O');
-      if(campos.every(campo => campo === "X")) setGanhador('X');
+      if(campos.every(campo => campo === "O")) setGanhador(`O jogador 'O', foi o vencedor.`);
+      if(campos.every(campo => campo === "X")) setGanhador(`O jogador 'X', foi o vencedor.`);
     })
   }
 
@@ -54,8 +54,8 @@ function App() {
 
   return (
     <main>
-      <h1 className="title"> *** Jogo da Velha ***</h1>
-
+      <h1 className="title"> JOGO DA VELHA </h1>
+      <h1 className="vencedor">{ganhador}</h1>
       <div className="tabuleiro">
         {
           tabuleiro.map((item, index) => (
@@ -67,7 +67,11 @@ function App() {
               {item}
             </div>
           ))
+
+         
         }
+
+       
       </div>
     </main>
   )

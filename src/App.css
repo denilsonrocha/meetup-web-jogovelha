@@ -15,20 +15,27 @@ body {
 
   font-family: sans-serif;
   height: 100vh;
-  background-color: #eee;
+  background-color: #23233b;
 }
 
 .title {
   text-align: center;
+  font-size: 2rem;
+  color: #ff5a18;
+  margin-bottom: 2rem;
+}
+
+.vencedor {
+  text-align: center;
   font-size: 3rem;
-  color: #555;
+  color: yellow;
   margin-bottom: 2rem;
 }
 
 .tabuleiro {
   display: grid;
-  grid-template-columns: repeat(3, 240px);
-  grid-template-rows: repeat(3, 200px);
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 160px);
   gap: 1rem;
 }
 
