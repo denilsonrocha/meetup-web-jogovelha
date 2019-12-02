@@ -28,6 +28,8 @@ function App() {
     setJogadorAtual(jogadorAtual === "X"? "O" : "X")
   }
 
+
+
   
 
   const verificaGanhador = () => {
@@ -67,11 +69,7 @@ function App() {
               {item}
             </div>
           ))
-
-         
         }
-
-       
       </div>
     </main>
   )
