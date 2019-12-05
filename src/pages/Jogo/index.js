@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const io = require('socket.io-client');
-const socket = io('http://localhost:3333');
+const socket = io(process.env.REACT_APP_API_URL);
 
 const Jogo = () => {
 
